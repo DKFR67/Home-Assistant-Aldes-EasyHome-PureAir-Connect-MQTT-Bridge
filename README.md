@@ -15,5 +15,5 @@ Makes the Connect Box believe it is communicating with Aldes Azure IoT Hub cloud
 3. Only one bridge at a time: stop other one before starting this one.
 
 ## Credits
-Inspired by https://github.com/djo1338/aldes-mqtt-bridge and the work of https://github.com/aalmazanarbs/hassio_aldes
+Inspired by [djo1338/aldes-mqtt-bridge](https://github.com/djo1338/aldes-mqtt-bridge) and the work of [aalmazanarbs/hassio_aldes](https://github.com/aalmazanarbs/hassio_aldes)
 Adapted to my ventilation unit model and packaged as an add-on that can be used directly in Home Assistant.
