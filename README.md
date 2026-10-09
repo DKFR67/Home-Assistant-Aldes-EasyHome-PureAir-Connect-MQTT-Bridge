@@ -3,6 +3,16 @@ Home Assistant Add-on for local control of Aldes EasyHome PureAir Connect, by in
 
 Makes the Connect Box believe it is communicating with Aldes Azure IoT Hub cloud, publishes its measurements to Home Assistant via MQTT (automatic discovery), and sends mode commands to it.
 
+## Installation
+- ## Add the repository
+Note: This is a repository for add-ons (containers), not HACS. Do not add it to HACS (which is for integrations, cards, and themes).
+
+In HAOS:
+
+Settings → Add-ons → Stores (at the bottom) → Add a repository
+- URL: https://github.com/DKFR67/Home-Assistant-Aldes-EasyHome-PureAir-Connect-MQTT-Bridge
+- Tap Create
+
 ## Options
 - **device_mac** (required): MAC address of the Wi-Fi module, e.g., '98D8632BD2F1'.
 - **device_suffix**: '_EASYH' for an EasyHome PureAir Ventilation unit.
