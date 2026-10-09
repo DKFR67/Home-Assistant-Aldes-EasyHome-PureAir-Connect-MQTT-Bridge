@@ -259,8 +259,6 @@ MODES = {
 def publish_ha_discovery(client):
     """Publish HA MQTT Discovery configs for all VMC entities. Called once on bridge connect."""
     log("publishing HA discovery...")
-    for _old in ("pcap", "outside_temperature", "indoor_temperature", "reject_temperature", "extract_flow", "supply_flow", "extract_speed", "supply_speed", "exchanger_power", "set_speed", "pm25", "voc", "rssi"):
-        client.publish(f"{HA_DISCOVERY_PREFIX}/sensor/aldes_vmc_{DEVICE_MAC}/{_old}/config", "", qos=1, retain=True)
     base_id = f"aldes_vmc_{DEVICE_MAC}"
 
     # Sensors
