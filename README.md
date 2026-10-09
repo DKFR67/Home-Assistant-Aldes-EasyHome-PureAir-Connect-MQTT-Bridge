@@ -9,15 +9,15 @@ Note: This is a repository for add-ons (containers), not HACS. Do not add it to 
 
 In HAOS:
 
-1. Settings → Add-ons → Stores (at the bottom) → Add a repository
-- URL: https://github.com/DKFR67/Home-Assistant-Aldes-EasyHome-PureAir-Connect-MQTT-Bridge
-2. Tap Create
+  - **Select** Settings → Add-ons → Stores (at the bottom) → Add a repository
+  - **Enter** URL: https://github.com/DKFR67/Home-Assistant-Aldes-EasyHome-PureAir-Connect-MQTT-Bridge
+  - **Tap** Create
 
 - ## Options
   - **device_mac** (required): MAC address of the Wi-Fi module, e.g., '98D8632BD2F1'.
-- **device_suffix**: '_EASYH' for an EasyHome PureAir Ventilation unit.
-- **mqtt_host / mqtt_user / mqtt_password**: Leave blank to automatically use HA's Mosquitto.
-- **topic_prefix**: Topic prefix (default 'aldes/vmc').
+  - **device_suffix**: '_EASYH' for an EasyHome PureAir Ventilation unit.
+  - **mqtt_host / mqtt_user / mqtt_password**: Leave blank to automatically use HA's Mosquitto.
+  - **topic_prefix**: Topic prefix (default 'aldes/vmc').
 
 ## Network Prerequisites
 1. The DNS server serving the VMC must resolve 'aldesiotsuite.azure-devices.net' to the IP address of this Home Assistant instance, in my setup, I use Adguardhome.
