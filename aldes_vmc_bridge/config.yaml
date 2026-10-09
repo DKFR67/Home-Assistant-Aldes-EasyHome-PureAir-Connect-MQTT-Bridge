@@ -1,5 +1,5 @@
 name: "Aldes VMC Local Bridge"
-version: "1.0.0"
+version: "1.0.1"
 slug: aldes_vmc_bridge
 description: "Local MQTT Bridge for Aldes EasyHome PureAir Connect (replaces the Azure IoT Hub cloud)"
 arch:
