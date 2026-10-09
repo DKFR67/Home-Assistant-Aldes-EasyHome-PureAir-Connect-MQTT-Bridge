@@ -1,0 +1,21 @@
+#include <tunables/global>
+
+profile aldes_vmc_bridge flags=(attach_disconnected,mediate_deleted) {
+  #include <abstractions/base>
+
+  capability,
+  file,
+  network,
+  signal,
+
+  deny capability sys_admin,
+  deny capability sys_module,
+  deny capability sys_ptrace,
+  deny capability sys_rawio,
+  deny capability net_admin,
+  deny mount,
+  deny umount,
+  deny pivot_root,
+  deny /proc/sys/** w,
+  deny /sys/** w,
+}
