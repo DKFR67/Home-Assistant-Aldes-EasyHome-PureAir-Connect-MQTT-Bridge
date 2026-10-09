@@ -7,7 +7,7 @@ Makes the Connect Box believe it is communicating with Aldes Azure IoT Hub cloud
 - ## Add the repository
 Note: This is a repository for add-ons (containers), not HACS. Do not add it to HACS (which is for integrations, cards, and themes).
 
-In HAOS:
+- ## In HAOS:
 
   - **Select** Settings → Add-ons → Stores (at the bottom) → Add a repository
   - **Enter** URL: https://github.com/DKFR67/Home-Assistant-Aldes-EasyHome-PureAir-Connect-MQTT-Bridge
