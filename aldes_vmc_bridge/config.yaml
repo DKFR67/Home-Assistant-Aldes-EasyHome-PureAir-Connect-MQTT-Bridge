@@ -5,7 +5,7 @@ description: "Local MQTT Bridge for Aldes EasyHome PureAir Connect (replaces the
 arch:
   - amd64
   - aarch64
-init: false
+init: true
 startup: services
 boot: auto
 services:
