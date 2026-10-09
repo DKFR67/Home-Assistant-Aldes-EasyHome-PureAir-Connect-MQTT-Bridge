@@ -1,7 +1,7 @@
 name: "Aldes VMC Local Bridge"
 version: "1.0.0"
 slug: aldes_vmc_bridge
-description: "Pont MQTT local pour VMC Aldes Connect (remplace le cloud Azure IoT Hub)"
+description: "Local MQTT Bridge for Aldes EasyHome PureAir Connect (replaces the Azure IoT Hub cloud)"
 arch:
   - amd64
   - aarch64
@@ -13,7 +13,7 @@ services:
 ports:
   8883/tcp: 8883
 ports_description:
-  8883/tcp: "MQTT/TLS attendu par la Connect Box (ne pas changer)"
+  8883/tcp: "MQTT/TLS required by the Connect Box (do not change)"
 options:
   device_suffix: "_EASYH"
   device_name: "Aldes VMC"
