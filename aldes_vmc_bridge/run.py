@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Add-on entry point: HA options -> environment variables -> fake_iothub.py."""
-import json, os, runpy, sys, urllib.request
+import json, os, runpy, sys, signal, urllib.request
 
 OPTIONS_FILE = os.getenv("OPTIONS_FILE", "/data/options.json")
 APP_FILE = os.getenv("APP_FILE", "/app/fake_iothub.py")
 
+def _stop(signum, frame):
+    print(f"[addon] signal {signum} received, clean shutdown", flush=True)
+    sys.exit(0)
 
 def supervisor_mqtt():
     """Mosquitto broker credentials provided by the Supervisor (the 'mqtt' service)."""
@@ -24,6 +27,9 @@ def supervisor_mqtt():
 
 
 def main():
+    signal.signal(signal.SIGTERM, _stop)
+    signal.signal(signal.SIGINT, _stop)
+    
     with open(OPTIONS_FILE, encoding="utf-8") as f:
         opt = json.load(f)
 
