@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Point d'entree de l'add-on : options HA -> variables d'environnement -> fake_iothub.py."""
+"""Add-on entry point: HA options -> environment variables -> fake_iothub.py."""
 import json, os, runpy, sys, urllib.request
 
 OPTIONS_FILE = os.getenv("OPTIONS_FILE", "/data/options.json")
@@ -7,7 +7,7 @@ APP_FILE = os.getenv("APP_FILE", "/app/fake_iothub.py")
 
 
 def supervisor_mqtt():
-    """Identifiants du broker Mosquitto fournis par le Supervisor (service 'mqtt')."""
+    """Mosquitto broker credentials provided by the Supervisor (the 'mqtt' service)."""
     token = os.getenv("SUPERVISOR_TOKEN")
     if not token:
         return {}
@@ -19,7 +19,7 @@ def supervisor_mqtt():
         with urllib.request.urlopen(req, timeout=10) as r:
             return json.load(r).get("data") or {}
     except Exception as e:
-        print(f"[addon] service MQTT du Supervisor indisponible: {e}", flush=True)
+        print(f"[add-on] Supervisor's MQTT service is unavailable: {e}", flush=True)
         return {}
 
 
@@ -29,13 +29,13 @@ def main():
 
     mac = (opt.get("device_mac") or "").strip()
     if not mac:
-        sys.exit("[addon] FATAL: l'option 'device_mac' est obligatoire (MAC du module Wi-Fi, 12 caracteres hexa).")
+        sys.exit("[add-on] FATAL: The 'device_mac' option is required (Wi-Fi module MAC address, 12 hex characters).")
 
     host = (opt.get("mqtt_host") or "").strip()
     port = opt.get("mqtt_port") or 1883
     user = opt.get("mqtt_user") or ""
     pwd = opt.get("mqtt_password") or ""
-    if not host:  # mode automatique : on demande au Supervisor
+    if not host:  # automatic mode: ask the Supervisor
         svc = supervisor_mqtt()
         host = svc.get("host") or "core-mosquitto"
         port = svc.get("port") or port
@@ -53,10 +53,10 @@ def main():
         "UPSTREAM_MQTT_PORT": str(port),
         "UPSTREAM_MQTT_USER": user,
         "UPSTREAM_MQTT_PASS": pwd,
-        "CERT_DIR": os.getenv("CERT_DIR", "/data"),   # persiste entre redemarrages
-        "LOG_FILE": os.getenv("LOG_FILE", "/dev/null"),  # les logs vont dans l'onglet Journal
+        "CERT_DIR": os.getenv("CERT_DIR", "/data"),   # persists between restarts
+        "LOG_FILE": os.getenv("LOG_FILE", "/dev/null"),  # the logs go to the Log tab
     })
-    print(f"[addon] MQTT {host}:{port} (auth: {'oui' if user else 'non'}), "
+    print(f"[add-on] MQTT {host}:{port} (auth: {'oui' if user else 'non'}), "
           f"device {mac.upper().replace(':', '').replace('-', '')}{suffix}", flush=True)
     runpy.run_path(APP_FILE, run_name="__main__")
 
