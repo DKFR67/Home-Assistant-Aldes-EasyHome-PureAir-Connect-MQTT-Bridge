@@ -11,10 +11,10 @@ In HAOS:
 
 Settings → Add-ons → Stores (at the bottom) → Add a repository
 - URL: https://github.com/DKFR67/Home-Assistant-Aldes-EasyHome-PureAir-Connect-MQTT-Bridge
-- Tap Create
+Tap Create
 
-## Options
-- **device_mac** (required): MAC address of the Wi-Fi module, e.g., '98D8632BD2F1'.
+- ## Options
+  - **device_mac** (required): MAC address of the Wi-Fi module, e.g., '98D8632BD2F1'.
 - **device_suffix**: '_EASYH' for an EasyHome PureAir Ventilation unit.
 - **mqtt_host / mqtt_user / mqtt_password**: Leave blank to automatically use HA's Mosquitto.
 - **topic_prefix**: Topic prefix (default 'aldes/vmc').
