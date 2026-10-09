@@ -2,6 +2,8 @@
 # If your current Docker image uses a different base image (the `FROM` line), use the same one here.
 FROM python:3.12-slim
 
+ENV PYTHONWARNINGS="ignore::DeprecationWarning"
+
 # paho-mqtt MUST remain at version 1.x: fake_iothub.py uses the old callback API.
 RUN pip install --no-cache-dir "paho-mqtt==1.6.1" cryptography
 
